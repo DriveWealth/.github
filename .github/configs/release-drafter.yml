@@ -1,0 +1,71 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "$RESOLVED_VERSION"
+version-template: "$MAJOR.$MINOR.$PATCH$PRERELEASE"
+version-resolver:
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "minor"
+      - "enhancement"
+  patch:
+    labels:
+      - "hotfix"
+      - "fix"
+  default: "minor"
+
+categories:
+  - title: "🚀 Enhancements"
+    labels:
+      - "enhancement"
+  - title: "🐛 Bug Fixes"
+    labels:
+      - "fix"
+      - "bugfix"
+      - "bug"
+      - "hotfix"
+  - title: "📚️ Documentation"
+    labels:
+      - "docs"
+      - "documentation"
+  - title: "🏗️ Build/Release Maintenance"
+    labels:
+      - "github"
+      - "automation"
+
+autolabeler:
+  - label: "hotfix"
+    branch:
+      - '/release\/.+/'
+  - label: "hotfix"
+    branch:
+      - '/release\/.+/'
+  - label: "documentation"
+    files:
+      - "*.md"
+  - label: "automation"
+    files:
+      - ".github/**/*"
+  - label: "enhancement"
+    branch:
+      - '/feature\/.+/'
+      - '/feat\/.+/'
+  - label: "fix"
+    branch:
+      - '/fix\/.+/'
+
+change-template: |
+  <details>
+    <summary>$TITLE @$AUTHOR (#$NUMBER)</summary>
+    $BODY
+  </details>
+template: |
+  $CHANGES
+replacers:
+  # Remove irrelevant information from Renovate bot
+  - search: '/(?<=---\s+)^#.*(Renovate configuration|Configuration)(?:.|\n)*?This PR has been generated .*/gm'
+    replace: ""
+  # Remove Renovate bot banner image
+  - search: '/\[!\[[^\]]*Renovate\][^\]]*\](\([^)]*\))?\s*\n+/gm'
+    replace: ""
