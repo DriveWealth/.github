@@ -5,7 +5,7 @@
 {{- $banner := printf "https://github.com/%s/blob/main/.github/banner.png?raw=true" (ds "config").github_repo -}}
 {{- $homepage := "https://www.drivewealth.com/" -}}
 {{- $logo := "https://www.drivewealth.com/wp-content/uploads/2024/03/DW_logo_primary-300x43.png" -}}
-{{- $sections := slice "introduction" "quickstart" "examples" -}}
+{{- $sections := coll.Slice "introduction" "quickstart" "examples" -}}
 {{- define "nonEmptySections" -}}
 {{- range . -}}{{ $sectionContent := index (ds "config") . -}}{{ if and $sectionContent (gt (len $sectionContent) 2048) -}}{{ . }} {{ end -}}{{ end -}}
 {{- end -}}
