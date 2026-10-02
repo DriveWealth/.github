@@ -6,3 +6,12 @@ self-hosted-runner:
     - "runs-on/pool=*"
     - "runs-on/*/pool=*"
     - ny4
+
+paths:
+  .github/workflows/**/*.{yml,yaml}:
+    ignore:
+      # actionlint's cached action-metadata for actions/create-github-app-token@v3 predates
+      # v3.1.0, which added `client-id` (replacing the now-deprecated `app-id`). These are
+      # false positives for any workflow correctly using the newer `client-id` input.
+      - 'missing input "app-id" which is required by action "actions/create-github-app-token@v3"'
+      - 'input "client-id" is not defined in action "actions/create-github-app-token@v3"'
