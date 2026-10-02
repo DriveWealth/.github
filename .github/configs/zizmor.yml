@@ -1,0 +1,13 @@
+# zizmor configuration — org-wide default used as a fallback for repos
+# without their own .github/zizmor.yml.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        "DriveWealth/*": ref-pin
+        "actions/*": ref-pin
+        "github/*": ref-pin
+        "*": hash-pin
+
+  secrets-inherit:
+    disable: true

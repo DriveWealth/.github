@@ -1,0 +1,8 @@
+# actionlint configuration — org-wide default used as a fallback for repos
+# without their own .github/actionlint.yaml.
+# https://github.com/rhysd/actionlint/blob/main/docs/config.md
+self-hosted-runner:
+  labels:
+    - "runs-on/pool=*"
+    - "runs-on/*/pool=*"
+    - ny4
