@@ -55,11 +55,7 @@ autolabeler:
     branch:
       - '/fix\/.+/'
 
-change-template: |
-  <details>
-    <summary>$TITLE @$AUTHOR (#$NUMBER)</summary>
-    $BODY
-  </details>
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 template: |
   $CHANGES
 replacers:
